@@ -3,9 +3,12 @@
   function checkroman(){
       console.log("test start");
       try{
-        const number = romanize(5); 
-        console.log(number);
-        console.log("test pass");
+        const number=5;
+        const romnumber = romanize(number); 
+        const result = 'V';
+        if(romnumber === result){
+            console.log("test pass " + romnumber +" equals "+result);
+        }
       }catch(err){
           console.log("test failed " +err);
       }
