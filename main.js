@@ -3,9 +3,9 @@
   function checkroman(){
       console.log("test start");
       try{
-        const number=5;
+        const number=13;
         const romnumber = romanize(number); 
-        const result = 'V';
+        const result = 'XIII';
         if(romnumber === result){
             console.log("test pass " + romnumber +" equals "+result);
         }
@@ -15,12 +15,29 @@
   }
   //Escribir codigo funcional
   var romanMatrix = [
-    [5, 'V']
+    [1000, 'M'],
+    [900, 'CM'],
+    [500, 'D'],
+    [400, 'CD'],
+    [100, 'C'],
+    [90, 'XC'],
+    [50, 'L'],
+    [40, 'XL'],
+    [10, 'X'],
+    [9, 'IX'],
+    [5, 'V'],
+    [4, 'IV'],
+    [1, 'I']
   ];
   function romanize(num){
-     if (num >= romanMatrix[0][0]) {
-        return romanMatrix[0][1];
-     }  
+     if (num === 0) {
+        return '';
+      }
+     for (var i = 0; i < romanMatrix.length; i++) {
+        if (num >= romanMatrix[i][0]) {
+            return romanMatrix[i][1] + romanize(num-romanMatrix[i][0]);
+        }  
+     }
    }
   checkroman();
 
