@@ -278,55 +278,57 @@ function romanize(num){
 */
 checktest(20,'XX');
 console.log("test 11 --- el 21 se debe convertir en XXI");
-checktest(21,'XXI');
+//checktest(21,'XXI');
 function romanize(num){
     var romanNumber = '';
-    function getBase(num){
-        if(num <= 3){
-            for(i=0; i<num;i++) {
-                romanNumber += 'I';
+    function getBase(base){
+    let baseNumber = '';
+        if(base <= 3){
+            for(i=0; i<base;i++) {
+                baseNumber += 'I';
              }
-            return romanNumber
-        }else if(num ===4){
+            return baseNumber
+        }else if(base ===4){
             return 'IV'
-        }else if(num === 5){
+        }else if(base === 5){
             return 'V'
-        }else if(num > 5 && num <9){
-            romanNumber = 'V';
-            for(i=0; i<num -5;i++) {
-                romanNumber += 'I';
+        }else if(base > 5 && base <9){
+            baseNumber = 'V';
+            for(i=0; i<base -5;i++) {
+                baseNumber += 'I';
              }
-            return romanNumber
-        }else if(num === 9){
+            return baseNumber
+        }else if(base === 9){
             return 'IX'
-        }else if(num === 10){
+        }else if(base === 10){
             return 'X'
         }
     }
     if(num<=10){
        return getBase(num);
     }else{
-        let mod = num%10;
-        let val1='';
-        let val2='';
-        const base=10;
-        const rep = Math.trunc(num /base);
+        var mod = num%10;
+        let baseNumber='';
+        let basextension= 0;
+        let base=10;
+        let rep = Math.trunc(num /base);
         if(mod!=0){
-            console.log(base,rep);
             for(var i=0;i<rep;i++){
-                val1 = getBase(base);
-                romanNumber += val1;
+                baseNumber = getBase(base);
+                romanNumber += baseNumber;
             }
-            console.log(romanNumber);
-            val2 = getBase(mod);
-            console.log(val2);
-            return romanNumber += val2;
+            basextension = getBase(mod);
+            return romanNumber += basextension;
         }else{
             for(var i=0;i<rep;i++){
-                val1 = getBase(base);
-                romanNumber += val1;
+                baseNumber = getBase(base);
+                romanNumber += baseNumber;
             }
             return romanNumber
         }
     }
 }
+
+checktest(21,'XXI');
+console.log("test 11 --- el 40 se debe convertir en XL");
+checktest(40,'XL');
