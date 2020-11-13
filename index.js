@@ -31,6 +31,7 @@ function romanize(num){
 }
 */
 checktest(2,'II');
+//case 3
 console.log("test 3 --- el 3 se debe convertir en III");
 //checktest(3,'III');
 /*
@@ -45,7 +46,7 @@ function romanize(num){
 }
 */
 checktest(3,'III');
-
+//case 4
 console.log("test 4 --- el 4 se debe convertir en IV");
 //checktest(4,'IV');
 /*
@@ -76,6 +77,7 @@ function romanize(num){
 }
 */
 checktest(4,'IV');
+//case 5
 console.log("test 5 --- el 5 se debe convertir en V");
 //checktest(5,'V');
 /*
@@ -94,8 +96,9 @@ function romanize(num){
 }
 */
 checktest(5,'V');
+//case 6
 console.log("test 6 --- el 6 se debe convertir en VI");
-checktest(6,'VI');
+//checktest(6,'VI');
 /*
 function romanize(num){
     var romanNumber = '';
@@ -113,33 +116,7 @@ function romanize(num){
     }
 }
 */
-console.log("test 7 --- el 9 se debe convertir en IX");
-//checktest(9,'IX');
-/*function romanize(num){
-    var romanNumber = '';
-    if(num <= 3){
-        for(i=0; i<num;i++) {
-            romanNumber += 'I';
-         }
-        return romanNumber
-    }else if(num ===4){
-        return 'IV'
-    }else if(num === 5){
-        return 'V'
-    }else if(num > 5 && num <9){
-        romanNumber = 'V';
-        for(i=0; i<num -5;i++) {
-            romanNumber += 'I';
-         }
-        return romanNumber
-    }else{
-        return 'IX'
-    }
-}
-*/
-checktest(9,'IX');
-console.log("test 8 --- el 10 se debe convertir en X");
-//checktest(10,'X');
+// refactorize code
 /*
 function romanize(num){
     var romanNumber = '';
@@ -148,16 +125,94 @@ function romanize(num){
             romanNumber += 'I';
          }
         return romanNumber
-    }else if(num ===4){
-        return 'IV'
-    }else if(num === 5){
-        return 'V'
-    }else if(num > 5 && num <9){
-        romanNumber = 'V';
-        for(i=0; i<num -5;i++) {
+    }else{
+        const ref = num -5;
+        for(i=0; i<Math.abs(ref);i++) {
+            romanNumber += 'I';
+        }
+        if(ref<0){
+            return romanNumber + 'V'
+        }else{
+            return 'V' + romanNumber
+        }
+    }
+}
+*/
+checktest(6,'VI');
+//case 7
+console.log("test 7 --- el 9 se debe convertir en IX");
+//checktest(9,'IX');
+/*
+function romanize(num){
+    var romanNumber = '';
+    if(num <= 3){
+        for(i=0; i<num;i++) {
             romanNumber += 'I';
          }
         return romanNumber
+    }else if(num >3 && num <9){
+        const ref = num -5;
+        for(i=0; i<Math.abs(ref);i++) {
+            romanNumber += 'I';
+        }
+        if(ref<0){
+            return romanNumber + 'V'
+        }else{
+            return 'V' + romanNumber
+        }
+    }else{
+        return 'IX'
+    }
+}
+*/
+//refactorizar codigo
+/*
+function romanize(num){
+    var romanNumber = '';
+    function getI(inum){
+        for(i=0; i<inum;i++) {
+            romanNumber += 'I';
+         }
+         return romanNumber;
+    }
+    if(num <= 3){
+        return getI(num);
+    }else if(num >3 && num <9){
+        const ref = num -5;
+        romanNumber=getI(Math.abs(ref));
+        if(ref<0){
+            return romanNumber + 'V'
+        }else{
+            return 'V' + romanNumber
+        }
+    }else{
+        return 'IX'
+    }
+}
+*/
+checktest(9,'IX');
+//case 8
+console.log("test 8 --- el 10 se debe convertir en X");
+//checktest(10,'X');
+/*
+function romanize(num){
+    var romanNumber = '';
+    function getI(inum){
+        for(i=0; i<inum;i++) {
+            romanNumber += 'I';
+         }
+         return romanNumber;
+    }
+    if(num <= 3){
+        return getI(num);
+    }else if(num >3 && num <9){
+        const ref = num -5;
+        romanNumber=getI(Math.abs(ref));
+        if(ref<0){
+            return romanNumber + 'V'
+        }else{
+            return 'V' + romanNumber
+        }
     }else if(num === 9){
         return 'IX'
     }else{
@@ -166,29 +221,31 @@ function romanize(num){
 }
 */
 checktest(10,'X');
+// case 9
 console.log("test 9 --- el 11 se debe convertir en XI");
 //checktest(19,'XIX');
 /*
 function romanize(num){
     var romanNumber = '';
+    function getI(inum){
+        for(i=0; i<inum;i++) {
+            romanNumber += 'I';
+         }
+         return romanNumber;
+    }
     if(num <= 3){
-        for(i=0; i<num;i++) {
-            romanNumber += 'I';
-         }
-        return romanNumber
-    }else if(num ===4){
-        return 'IV'
-    }else if(num === 5){
-        return 'V'
-    }else if(num > 5 && num <9){
-        romanNumber = 'V';
-        for(i=0; i<num -5;i++) {
-            romanNumber += 'I';
-         }
-        return romanNumber
+        return getI(num);
+    }else if(num >3 && num <9){
+        const ref = num -5;
+        romanNumber=getI(Math.abs(ref));
+        if(ref<0){
+            return romanNumber + 'V'
+        }else{
+            return 'V' + romanNumber
+        }
     }else if(num === 9){
         return 'IX'
-    }else if(num === 10){
+    }else if(num ===10){
         return 'X'
     }else{
         return 'XI'
@@ -196,41 +253,43 @@ function romanize(num){
 }
 */
 // refactorizar codigo
-/*
+
 function romanize(num){
     var romanNumber = '';
     function getBase(num){
-        if(num <= 3){
-            for(i=0; i<num;i++) {
-                romanNumber += 'I';
-             }
-            return romanNumber
-        }else if(num ===4){
-            return 'IV'
-        }else if(num === 5){
-            return 'V'
-        }else if(num > 5 && num <9){
-            romanNumber = 'V';
-            for(i=0; i<num -5;i++) {
-                romanNumber += 'I';
-             }
-            return romanNumber
-        }else if(num === 9){
-            return 'IX'
-        }else if(num === 10){
-            return 'X'
+       function getI(inum){
+        for(i=0; i<inum;i++) {
+            romanNumber += 'I';
+         }
+         return romanNumber;
+       }
+    if(num <= 3){
+        return getI(num);
+    }else if(num >3 && num <9){
+        const ref = num -5;
+        romanNumber=getI(Math.abs(ref));
+        if(ref<0){
+            return romanNumber + 'V'
+        }else{
+            return 'V' + romanNumber
         }
-    }
-    if(num<=10){
-       return getBase(num);
-    }else{
-        const val1 = getBase(num-(num%10));
-        const val2 = getBase(num%10);
-        return romanNumber =val1+val2;
+    }else if(num === 9){
+        return 'IX'
+    }else if(num ===10){
+        return 'X'
     }
 }
-*/
-checktest(19,'XIX');
+if(num<=10){
+    return getBase(num);
+}else{
+    const val1 = getBase(num-(num%10));
+    const val2 = getBase(num%10);
+    return romanNumber =val1+val2;
+}
+}
+
+checktest(11,'XI');
+// case 10
 console.log("test 10 --- el 20 se debe convertir en XX");
 //checktest(21,'XXI');
 /*
@@ -277,8 +336,10 @@ function romanize(num){
 }
 */
 checktest(20,'XX');
+//case 11
 console.log("test 11 --- el 21 se debe convertir en XXI");
 //checktest(21,'XXI');
+/*
 function romanize(num){
     var romanNumber = '';
     function getBase(base){
@@ -328,7 +389,8 @@ function romanize(num){
         }
     }
 }
-
-checktest(21,'XXI');
-console.log("test 11 --- el 40 se debe convertir en XL");
-checktest(40,'XL');
+*/
+//checktest(21,'XXI');
+//case 12
+console.log("test 12 --- el 40 se debe convertir en XL");
+//checktest(40,'XL');
